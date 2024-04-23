@@ -15,16 +15,17 @@ const GetAuthors = () => {
   }, []);
 
   const handleDelete = async (author) => {
-    const confirm = window.confirm("Are You Sure to Delete?");
-    if (confirm) {
+    const confirmDelete = window.confirm("Are You Sure to Delete?");
+    if (confirmDelete) {
       try {
-        await axios.delete(`${API}/${author.id}`);
+        await axios.delete(`${API}/author/${author.id}`);
         setAuthor(Author.filter((b) => b.id !== author.id));
       } catch (error) {
         console.log(error);
       }
     }
   };
+  
 
   return (
     <>
